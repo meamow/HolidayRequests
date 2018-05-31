@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SharePointSiteUrl>https://equinoxuk.sharepoint.com/sites/Development/</SharePointSiteUrl>
+    <WorkflowDebuggingClientSecret>l34G7z+QOmAmQx49e5jSHIOCGIFLFSOs1I/mHfDsaMk=</WorkflowDebuggingClientSecret>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{C1CDDADD-2546-481F-9697-4EA41081F2FC}">
+        <ProjectStore>
+          <IsWorkflowDebuggingEnabled>false</IsWorkflowDebuggingEnabled>
+          <AppInstancePackageModifiedTime>2018-05-18T15:21:28.5405472Z</AppInstancePackageModifiedTime>
+          <AppInstanceId>feaf36d3-beeb-47f3-8374-5b533615a095</AppInstanceId>
+        </ProjectStore>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
