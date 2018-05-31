@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hn:Workflow xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:hn="clr-namespace:HolidayRequests.NewRequest;assembly=HolidayRequests" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:msdad="clr-namespace:Microsoft.SharePoint.DesignTime.Activities.Design;assembly=Microsoft.SharePoint.DesignTime.Activities.16.0.Design" xmlns:p="http://schemas.microsoft.com/workflow/2012/07/xaml/activities" xmlns:p1="wf://workflow.windows.net/$Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>Microsoft.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.SharePoint.DesignTime.Activities.16.0</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>HolidayRequests</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <hn:Workflow.Implementation>
+    <Sequence DisplayName="Root">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="p:DynamicValue" Name="CurrentRequest" />
+        <Variable x:TypeArguments="s:DateTime" Name="StartTime" />
+        <Variable x:TypeArguments="s:DateTime" Name="EndTime" />
+        <Variable x:TypeArguments="x:String" Name="Request" />
+        <Variable x:TypeArguments="x:Int32" Name="RequestorId" />
+        <Variable x:TypeArguments="p:DynamicValue" Name="Requestor" />
+        <Variable x:TypeArguments="x:String" Name="RequestorTitle" />
+        <Variable x:TypeArguments="x:String" Name="RequestorEmail" />
+        <Variable x:TypeArguments="x:Int32" Name="TaskOutcome" />
+        <Variable x:TypeArguments="x:Int32" Name="TaskItemId" />
+        <Variable x:TypeArguments="x:Boolean" Name="AllDayEvent" />
+      </Sequence.Variables>
+      <p1:LookupSPListItem ItemGuid="{x:Null}" Properties="{x:Null}">
+        <p1:LookupSPListItem.ItemId>
+          <InArgument x:TypeArguments="x:Int32">
+            <p:ExpressionContainerValue x:TypeArguments="x:Int32">
+              <p1:GetCurrentItemId />
+            </p:ExpressionContainerValue>
+          </InArgument>
+        </p1:LookupSPListItem.ItemId>
+        <p1:LookupSPListItem.ListId>
+          <InArgument x:TypeArguments="s:Guid">
+            <mca:CSharpValue x:TypeArguments="s:Guid">System.Guid.Parse("{$ListId:Lists/Requests;}")</mca:CSharpValue>
+          </InArgument>
+        </p1:LookupSPListItem.ListId>
+        <p1:LookupSPListItem.Result>
+          <OutArgument x:TypeArguments="p:DynamicValue">
+            <mca:CSharpReference x:TypeArguments="p:DynamicValue">CurrentRequest</mca:CSharpReference>
+          </OutArgument>
+        </p1:LookupSPListItem.Result>
+      </p1:LookupSPListItem>
+      <p:GetODataProperties DisplayName="GetDynamicValueProperties">
+        <p:GetODataProperties.Source>
+          <InArgument x:TypeArguments="p:DynamicValue">
+            <mca:CSharpValue x:TypeArguments="p:DynamicValue">CurrentRequest</mca:CSharpValue>
+          </InArgument>
+        </p:GetODataProperties.Source>
+        <scg:Dictionary x:TypeArguments="x:String, OutArgument">
+          <OutArgument x:TypeArguments="s:DateTime" x:Key="EventDate">
+            <mca:CSharpReference x:TypeArguments="s:DateTime">StartTime</mca:CSharpReference>
+          </OutArgument>
+          <OutArgument x:TypeArguments="s:DateTime" x:Key="EndDate">
+            <mca:CSharpReference x:TypeArguments="s:DateTime">EndTime</mca:CSharpReference>
+          </OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="AuthorId">
+            <mca:CSharpReference x:TypeArguments="x:Int32">RequestorId</mca:CSharpReference>
+          </OutArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="Description">
+            <mca:CSharpReference x:TypeArguments="x:String">Request</mca:CSharpReference>
+          </OutArgument>
+        </scg:Dictionary>
+      </p:GetODataProperties>
+      <p1:LookupSPUser>
+        <p1:LookupSPUser.PrincipalId>
+          <InArgument x:TypeArguments="x:Int32">
+            <mca:CSharpValue x:TypeArguments="x:Int32">RequestorId</mca:CSharpValue>
+          </InArgument>
+        </p1:LookupSPUser.PrincipalId>
+        <p1:LookupSPUser.Result>
+          <OutArgument x:TypeArguments="p:DynamicValue">
+            <mca:CSharpReference x:TypeArguments="p:DynamicValue">Requestor</mca:CSharpReference>
+          </OutArgument>
+        </p1:LookupSPUser.Result>
+      </p1:LookupSPUser>
+      <p:GetODataProperties DisplayName="GetDynamicValueProperties">
+        <p:GetODataProperties.Source>
+          <InArgument x:TypeArguments="p:DynamicValue">
+            <mca:CSharpValue x:TypeArguments="p:DynamicValue">Requestor</mca:CSharpValue>
+          </InArgument>
+        </p:GetODataProperties.Source>
+        <scg:Dictionary x:TypeArguments="x:String, OutArgument">
+          <OutArgument x:TypeArguments="x:String" x:Key="Title">
+            <mca:CSharpReference x:TypeArguments="x:String">RequestorTitle</mca:CSharpReference>
+          </OutArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="Email">
+            <mca:CSharpReference x:TypeArguments="x:String">RequestorEmail</mca:CSharpReference>
+          </OutArgument>
+        </scg:Dictionary>
+      </p:GetODataProperties>
+      <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" Body="Holiday Request has been completed success fully" Subject="Holiday Request has been complete">
+        <p1:Email.To>
+          <InArgument x:TypeArguments="sco:Collection(x:String)">
+            <mca:CSharpValue x:TypeArguments="sco:Collection(x:String)">new System.Collections.ObjectModel.Collection&lt;String&gt;() {"laura.cook@equinox.co.uk"}</mca:CSharpValue>
+          </InArgument>
+        </p1:Email.To>
+      </p1:Email>
+      <sads:DebugSymbol.Symbol>dztDOlxIb2xpZGF5UmVxdWVzdHNcSG9saWRheVJlcXVlc3RzXE5ld1JlcXVlc3RcV29ya2Zsb3cueGFtbBIrA4UBDgIBAU0FYRwCAU9iBW0XAgE2bgV8HAIBEX0FgwEQAgECVQtVXAMBgAFYC1haAgF0XgteWAIBaFALUF0CAVxbC1tbAgFQZQtlUwIBQ2oLamACATd5C3lfAgEqcQtxWAIBHnYLdl8CARKAAQuAAbMBAgEFfU59gAECAQR9swF91gECAQM=</sads:DebugSymbol.Symbol>
+    </Sequence>
+  </hn:Workflow.Implementation>
+</hn:Workflow>

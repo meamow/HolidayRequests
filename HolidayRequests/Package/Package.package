@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="bcb1f2ca-9be3-47e2-be1a-3a24c1ee8abe" 
+        solutionId="bcb1f2ca-9be3-47e2-be1a-3a24c1ee8abe" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="HolidayRequests"
+        sharePointProductVersion="16.0">
+  <features>
+        <featureReference itemId="0c923a2c-aec6-48d6-95b4-34f669b9fd72" />
+  </features>
+</package>

@@ -1,0 +1,13 @@
+C:\HolidayRequests\HolidayRequests\bin\Debug\HolidayRequests.pdb
+C:\HolidayRequests\HolidayRequests\obj\Debug\HolidayRequests.csproj.CoreCompileInputs.cache
+C:\HolidayRequests\HolidayRequests\obj\Debug\HolidayRequests.dll
+C:\HolidayRequests\HolidayRequests\obj\Debug\HolidayRequests.pdb
+C:\HolidayRequests\HolidayRequests\bin\Debug\Microsoft.Activities.dll
+C:\HolidayRequests\HolidayRequests\bin\Debug\Microsoft.SharePoint.DesignTime.Activities.16.0.dll
+C:\HolidayRequests\HolidayRequests\bin\Debug\Microsoft.Activities.xml
+C:\HolidayRequests\HolidayRequests\obj\Debug\HolidayRequests.csprojResolveAssemblyReference.cache
+C:\HolidayRequests\HolidayRequests\bin\Debug\Microsoft.Activities.Design.dll
+C:\HolidayRequests\HolidayRequests\bin\Debug\Microsoft.Activities.Design.Services.dll
+C:\HolidayRequests\HolidayRequests\bin\Debug\Microsoft.Workflow.Client.dll
+C:\HolidayRequests\HolidayRequests\bin\Debug\Microsoft.Activities.Design.xml
+C:\HolidayRequests\HolidayRequests\bin\Debug\Microsoft.Workflow.Client.xml

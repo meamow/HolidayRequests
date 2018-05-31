@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="bcb1f2ca-9be3-47e2-be1a-3a24c1ee8abe" SharePointProductVersion="16.0">
+  <FeatureManifests>
+    <FeatureManifest Location="TimeOffManager_Feature1\Feature.xml" />
+  </FeatureManifests>
+</Solution>
